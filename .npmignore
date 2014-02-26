@@ -1,0 +1,6 @@
+test
+example
+.npmignore
+.travis.yml
+Gruntfile.js
+gulpfile.js

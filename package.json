@@ -1,0 +1,37 @@
+{
+  "name": "connect-browser-sync",
+  "version": "0.0.1",
+  "description": "Connect middleware for BrowserSync.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "dependencies": {
+    "TODO": ""
+  },
+  "devDependencies": {
+    "TODO": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/schmich/connect-browser-sync.git"
+  },
+  "keywords": [
+    "browsersync",
+    "browser-sync",
+    "express",
+    "connect"
+  ],
+  "bugs": {
+    "url": "https://github.com/schmich/connect-browser-sync/issues"
+  },
+  "author": {
+    "name": "Chris Schmich",
+    "email": "schmch@gmail.com",
+    "url": "https://github.com/schmich"
+  },
+  "homepage": "https://github.com/schmich/connect-browser-sync",
+  "contributors": [],
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
