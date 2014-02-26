@@ -1,6 +1,6 @@
 # connect-browser-sync
 
-TODO
+Connect middleware for BrowserSync.
 
 ## Installation
 
@@ -10,8 +10,8 @@ npm install connect-browser-sync --save-dev
 
 ## Usage
 
-TODO
 TODO: Warning about minimum supported verison of BrowserSync (0.5.7).
+TODO: Warning about necessary closing </body> tag.
 
 ## Example
 
