@@ -3,7 +3,7 @@
 
 var injector = require('connect-injector');
 
-function browserSyncInject(browserSyncServer) {
+function injectBrowserSync(browserSyncServer) {
   var snippet = '';
 
   browserSyncServer.on('init', function(api) {
@@ -15,12 +15,11 @@ function browserSyncInject(browserSyncServer) {
     return header && (header.toLowerCase().indexOf('text/html') >= 0);
   }, function(callback, data, req, res) {
     var lastBody = /<\s*\/\s*body\s*>(?!(.|\n)*<\s*\/\s*body\s*>)/gi;
-    var injected = data.toString().replace(lastBody, snippet + '\n</body>');
+    var injected = data.toString().replace(lastBody, snippet + '</body>');
     callback(null, injected);
   });
 
   return inject;
 }
 
-module.exports = browserSyncInject;
-
+module.exports = injectBrowserSync;
