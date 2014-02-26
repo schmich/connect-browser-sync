@@ -12,7 +12,7 @@ function browserSyncInject(browserSyncServer) {
 
   var inject = injector(function(req, res) {
     var header = res.getHeader('content-type');
-    return header && (header.indexOf('text/html') >= 0);
+    return header && (header.toLowerCase().indexOf('text/html') >= 0);
   }, function(callback, data, req, res) {
     var lastBody = /<\s*\/\s*body\s*>(?!(.|\n)*<\s*\/\s*body\s*>)/gi;
     var injected = data.toString().replace(lastBody, snippet + '\n</body>');
