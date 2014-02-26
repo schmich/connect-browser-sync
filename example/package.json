@@ -1,0 +1,16 @@
+{
+  "name": "connect-browser-sync-example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "ejs": "*"
+  },
+  "devDependencies": {
+    "browser-sync": "*",
+    "connect-browser-sync": "*"
+  }
+}
