@@ -4,14 +4,14 @@
 
 Use this middleware to automatically inject the necessary BrowserSync `<script>` tags into your HTML pages.
 
-## Installation
+Alternatively, you can integrate BrowserSync into your app using [Gulp](https://github.com/shakyShane/gulp-browser-sync) or [Grunt](https://github.com/shakyShane/grunt-browser-sync).
+
+## Usage
 
 ```
 npm install browser-sync --save-dev
 npm install connect-browser-sync --save-dev
 ```
-
-## Usage
 
 In `app.js`:
 
@@ -30,6 +30,7 @@ if (app.get('env') == 'development') {
 // Routes and handlers...
 ```
 
+- TODO: app.use must come before app.use(app.router);
 - TODO: Warning about minimum supported verison of BrowserSync (0.5.7).
 - TODO: Warning about necessary closing `body` tag.
 - TODO: Mention non-dependency on browser-sync (this way, the end-user defines which version to use).
