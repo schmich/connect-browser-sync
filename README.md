@@ -6,6 +6,8 @@ Use this middleware to automatically inject the necessary BrowserSync `<script>`
 
 ## Usage
 
+Assuming you will only use BrowserSync in development:
+
 ```
 npm install browser-sync --save-dev
 npm install connect-browser-sync --save-dev
@@ -32,8 +34,8 @@ app.use(app.router);
 ## Notes
 
 - The `app.use` statement must come before any handlers that you want to integrate with BrowserSync. This includes dynamic handlers (e.g. `app.use(app.router);`) and static handlers (e.g. `app.use(express.static(__dirname + '/public'));`)
-- This middleware has no explicit dependency on the `browser-sync` package, which allows you to use a specific version, but it does require BrowserSync v0.5.7 or greater.
-- Injection only happens on responses with a `Content-Type` header of `text/html` and a closing body tag (`</body>`).
+- This plugin has no explicit dependency on the `browser-sync` package, but you should use version 0.5.7 or greater.
+- Injection only happens on responses with a `Content-Type` header of `text/html` and content containing a closing body tag (`</body>`).
 
 ## Example
 
