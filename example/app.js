@@ -1,5 +1,6 @@
 var express = require('express');
 var http = require('http');
+var routes = require('./routes');
 var app = express();
 
 app.set('views', __dirname);
@@ -12,9 +13,9 @@ if (app.get('env') == 'development') {
   app.use(require('connect-browser-sync')(bs));
 }
 
-app.get('/', function(req, res) {
-  res.render('index.ejs');
-}); 
+app.use(app.router);
+
+app.get('/', routes.index);
 
 http.createServer(app).listen(3000, function() {
   console.log('Listening...');
