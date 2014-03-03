@@ -6,10 +6,10 @@ app.set('views', __dirname);
 app.set('view engine', 'ejs');
 app.use(express.logger('dev'));
 
-if ('development' == app.get('env')) {
+if (app.get('env') == 'development') {
   var browserSync = require('browser-sync');
-  var sync = browserSync.init([], { debugInfo: false });
-  app.use(require('connect-browser-sync')(sync));
+  var bs = browserSync.init([], { debugInfo: false });
+  app.use(require('connect-browser-sync')(bs));
 }
 
 app.get('/', function(req, res) {
