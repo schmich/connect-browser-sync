@@ -1,6 +1,6 @@
 {
   "name": "connect-browser-sync",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Connect middleware for BrowserSync.",
   "main": "index.js",
   "scripts": {
