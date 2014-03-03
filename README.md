@@ -2,7 +2,7 @@
 
 [Connect](https://github.com/senchalabs/connect) middleware for [BrowserSync](https://github.com/shakyShane/browser-sync).
 
-Use this middleware to automatically inject the necessary BrowserSync `<script>` tags into your HTML pages. Alternatively, you can integrate BrowserSync into your app using [Gulp](https://github.com/shakyShane/gulp-browser-sync) or [Grunt](https://github.com/shakyShane/grunt-browser-sync).
+Use this middleware to automatically inject the necessary BrowserSync `<script>` tags into your HTML pages. Alternatively, you can integrate BrowserSync with your app using [Gulp](https://github.com/shakyShane/gulp-browser-sync) or [Grunt](https://github.com/shakyShane/grunt-browser-sync).
 
 ## Usage
 
@@ -22,7 +22,7 @@ var app = express();
 
 if (app.get('env') == 'development') {
   var browserSync = require('browser-sync');
-  var bs = browserSync.init([], { debugInfo: false });
+  var bs = browserSync.init([], {});
   app.use(require('connect-browser-sync')(bs));
 }
 
@@ -30,6 +30,8 @@ app.use(app.router);
 
 // Routes and handlers...
 ```
+
+See the [BrowserSync API docs](https://github.com/shakyShane/browser-sync/wiki/api#wiki-api) for initialization options.
 
 ## Notes
 
