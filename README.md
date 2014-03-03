@@ -36,7 +36,7 @@ See the [BrowserSync API docs](https://github.com/shakyShane/browser-sync/wiki/a
 ## Notes
 
 - The `app.use` statement must come before any handlers that you want to integrate with BrowserSync. This includes dynamic handlers (e.g. `app.use(app.router);`) and static handlers (e.g. `app.use(express.static(__dirname + '/public'));`)
-- This plugin has no explicit dependency on the `browser-sync` package, but you should use version 0.5.7 or greater.
+- This plugin has no explicit dependency on the `browser-sync` package, but you must use version 0.5.7 or greater in order for the plugin to work.
 - Injection only happens on responses with a `Content-Type` header of `text/html` and content containing a closing body tag (`</body>`).
 
 ## Example
