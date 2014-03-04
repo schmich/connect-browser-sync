@@ -13,7 +13,10 @@
     "gulp": "~3.5.2",
     "gulp-util": "~2.2.14",
     "shelljs": "~0.2.6",
-    "inquirer": "~0.4.1"
+    "inquirer": "~0.4.1",
+    "connect": "~2.13.0",
+    "request": "~2.34.0",
+    "browser-sync": "*"
   },
   "repository": {
     "type": "git",
