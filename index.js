@@ -3,10 +3,10 @@
 
 var injector = require('connect-injector');
 
-module.exports = function injectBrowserSync(browserSyncServer) {
+module.exports = function injectBrowserSync(browserSync) {
   var snippet = '';
 
-  browserSyncServer.on('init', function(api) {
+  browserSync.on('init', function(api) {
     snippet = api.snippet;
   });
 
@@ -14,8 +14,21 @@ module.exports = function injectBrowserSync(browserSyncServer) {
     var contentType = res.getHeader('content-type');
     return contentType && (contentType.toLowerCase().indexOf('text/html') >= 0);
   }, function(callback, content, req, res) {
-    var lastBody = /<\s*\/\s*body\s*>(?!(.|\n)*<\s*\/\s*body\s*>)/gi;
-    var injected = content.toString().replace(lastBody, snippet + '</body>');
-    callback(null, injected);
+    function inject() {
+      var lastBody = /<\s*\/\s*body\s*>(?!(.|\n)*<\s*\/\s*body\s*>)/gi;
+      var injected = content.toString().replace(lastBody, snippet + '</body>');
+      callback(null, injected);
+    };
+
+    if (!snippet) {
+      // We don't have the snippet from BrowserSync yet.
+      // Block the response until we get it.
+      browserSync.on('init', function(api) {
+        snippet = api.snippet;
+        inject();
+      });
+    } else {
+      inject();
+    }
   });
 };
