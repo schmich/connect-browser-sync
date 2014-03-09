@@ -6,8 +6,8 @@ var injector = require('connect-injector');
 module.exports = function injectBrowserSync(browserSync) {
   var snippet = '';
 
-  browserSync.on('init', function(api) {
-    snippet = api.snippet;
+  browserSync.events.on('init', function(config) {
+    snippet = config.api.snippet;
   });
 
   return injector(function(req, res) {
@@ -23,8 +23,8 @@ module.exports = function injectBrowserSync(browserSync) {
     if (!snippet) {
       // We don't have the snippet from BrowserSync yet.
       // Block the response until we get it.
-      browserSync.on('init', function(api) {
-        snippet = api.snippet;
+      browserSync.events.on('init', function(config) {
+        snippet = config.api.snippet;
         inject();
       });
     } else {
