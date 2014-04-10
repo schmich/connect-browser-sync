@@ -4,9 +4,9 @@
 
 Use this middleware to automatically inject the necessary BrowserSync `<script>` tags into your HTML pages. Alternatively, you can integrate BrowserSync with your app using [Gulp](https://github.com/shakyShane/gulp-browser-sync) or [Grunt](https://github.com/shakyShane/grunt-browser-sync).
 
-[![NPM version](https://badge.fury.io/js/connect-browser-sync.png)](https://npmjs.org/package/connect-browser-sync)
-[![Build Status](https://travis-ci.org/schmich/connect-browser-sync.png?branch=master)](https://travis-ci.org/schmich/connect-browser-sync)
-[![Dependency Status](https://gemnasium.com/schmich/connect-browser-sync.png)](https://gemnasium.com/schmich/connect-browser-sync)
+[![NPM version](https://badge.fury.io/js/connect-browser-sync.svg)](https://npmjs.org/package/connect-browser-sync)
+[![Build Status](https://travis-ci.org/schmich/connect-browser-sync.svg?branch=master)](https://travis-ci.org/schmich/connect-browser-sync)
+[![Dependency Status](https://gemnasium.com/schmich/connect-browser-sync.svg)](https://gemnasium.com/schmich/connect-browser-sync)
 
 ## Usage
 
