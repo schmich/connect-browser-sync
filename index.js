@@ -7,7 +7,7 @@ module.exports = function injectBrowserSync(browserSync) {
   var snippet = '';
 
   browserSync.events.on('init', function(config) {
-    snippet = config.api.snippet;
+    snippet = config.options.snippet;
   });
 
   return injector(function(req, res) {
