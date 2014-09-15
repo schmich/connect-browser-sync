@@ -7,13 +7,13 @@ module.exports = function injectBrowserSync(browserSync) {
   var snippet = '';
 
   browserSync.events.on('init', function(config) {
-    snippet = config.api.snippet;
+    snippet = config.options.snippet;
   });
 
   return injector(function(req, res) {
     var contentType = res.getHeader('content-type');
     return contentType && (contentType.toLowerCase().indexOf('text/html') >= 0);
-  }, function(callback, content, req, res) {
+  }, function converter(content, req, res, callback) {
     function inject() {
       var lastBody = /<\s*\/\s*body\s*>(?!(.|\n)*<\s*\/\s*body\s*>)/gi;
       var injected = content.toString().replace(lastBody, snippet + '</body>');
@@ -24,7 +24,7 @@ module.exports = function injectBrowserSync(browserSync) {
       // We don't have the snippet from BrowserSync yet.
       // Block the response until we get it.
       browserSync.events.on('init', function(config) {
-        snippet = config.api.snippet;
+        snippet = config.options.snippet;
         inject();
       });
     } else {

@@ -24,10 +24,10 @@ var server = http.createServer(app).listen(port, function() {
       assert.fail('"ok" not found in response.');
     }
 
-    if (!/<\s*script\s*>/i.test(body)) {
+    if (!/<\s*script/i.test(body)) {
       assert.fail('<script> tag not found in response.');
     }
-    
+
     process.exit();
   });
 });
