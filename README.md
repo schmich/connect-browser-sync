@@ -35,7 +35,7 @@ app.use(app.router);
 // Routes and handlers...
 ```
 
-See the [BrowserSync API docs](https://github.com/shakyShane/browser-sync/wiki/api#wiki-api) for initialization options.
+See the [BrowserSync API docs](http://www.browsersync.io/docs/api/) for initialization options.
 
 ## Notes
 
