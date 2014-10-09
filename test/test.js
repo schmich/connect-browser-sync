@@ -13,25 +13,29 @@ var app = connect().use(connectBrowserSync(bs)).use(function(req, res) {
   res.end('<html><body>ok</body></html>');
 });
 
-var port = 9001;
-var server = http.createServer(app).listen(port, function() {
-  request('http://127.0.0.1:' + port, function(err, response, body) {
-    if (err) {
-      assert.fail('Error in request.');
-    }
+describe('connect-browser-sync', function() {
+  it('serves a page with injected tags', function(done) {
+    var port = 9001;
+    var server = http.createServer(app).listen(port, function() {
+      request('http://127.0.0.1:' + port, function(err, response, body) {
+        if (err) {
+          assert.fail('Error in request.');
+        }
 
-    if (!/ok/i.test(body)) {
-      assert.fail('"ok" not found in response.');
-    }
+        if (!/ok/i.test(body)) {
+          assert.fail('"ok" not found in response.');
+        }
 
-    if (!/<\s*script/i.test(body)) {
-      assert.fail('<script> tag not found in response.');
-    }
+        if (!/<\s*script/i.test(body)) {
+          assert.fail('<script> tag not found in response.');
+        }
 
-    process.exit();
+        done();
+      });
+    });
   });
-});
 
-setTimeout(function() {
-  assert.fail('Test did not complete within 30 seconds.');
-}, 30 * 1000);
+  setTimeout(function() {
+    assert.fail('Test did not complete within 30 seconds.');
+  }, 30 * 1000);
+});
