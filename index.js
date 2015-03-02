@@ -6,7 +6,7 @@ var injector = require('connect-injector');
 module.exports = function injectBrowserSync(browserSync) {
   var snippet = '';
 
-  browserSync.events.on('init', function(config) {
+  browserSync.emitter.on('init', function(config) {
     snippet = config.options.snippet;
   });
 
