@@ -10,7 +10,7 @@
     "ejs": "*"
   },
   "devDependencies": {
-    "browser-sync": "*",
-    "connect-browser-sync": "*"
+    "browser-sync": ">=2.0.0",
+    "connect-browser-sync": ">=2.0.0"
   }
 }
