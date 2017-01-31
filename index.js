@@ -3,8 +3,16 @@
 
 var injector = require('connect-injector');
 
-module.exports = function injectBrowserSync(browserSync) {
+module.exports = function injectBrowserSync(browserSync, options) {
   var snippet = '';
+  var options = options || {}
+  var tag = '</body>'
+  var regex = /<\s*\/\s*body\s*>(?!(.|\n)*<\s*\/\s*body\s*>)/gi
+
+  if (options.injectHead === true) {
+      tag = '</head>'
+      regex = /<\/head>/gi
+  }
 
   browserSync.emitter.on('service:running', function(data) {
     if (!snippet) {
@@ -17,8 +25,8 @@ module.exports = function injectBrowserSync(browserSync) {
     return contentType && (contentType.toLowerCase().indexOf('text/html') >= 0);
   }, function converter(content, req, res, callback) {
     function inject() {
-      var lastBody = /<\s*\/\s*body\s*>(?!(.|\n)*<\s*\/\s*body\s*>)/gi;
-      var injected = content.toString().replace(lastBody, snippet + '</body>');
+      var lastBody = regex
+      var injected = content.toString().replace(lastBody, snippet + tag);
       callback(null, injected);
     };
 
