@@ -24,11 +24,12 @@ var app = express();
 
 // Other configuration...
 
-if (app.get('env') == 'development') {
+if (app.get('env') === 'development') {
   var browserSync = require('browser-sync');
-  var bs = browserSync({ logSnippet: false });
+  var bs = browserSync.create().init({ logSnippet: false });
   app.use(require('connect-browser-sync')(bs));
 }
+
 
 // Routes and handlers...
 ```
@@ -37,9 +38,9 @@ See the [BrowserSync API docs](http://www.browsersync.io/docs/api/) for initiali
 
 ## Notes
 
-- The `app.use` statement must come before any handlers that you want to integrate with BrowserSync. This includes dynamic handlers (e.g. `app.use(app.router);`) and static handlers (e.g. `app.use(express.static(__dirname + '/public'));`)
 - You must use version 2.0.0 or greater of the `browser-sync` package.
-- Injection only happens on responses with a `Content-Type` header of `text/html` and content containing a closing body tag (`</body>`).
+- The `app.use` statement must come before any handlers that you want to integrate with BrowserSync. This includes both dynamic route handlers and static asset handlers.
+- Injection only happens on responses with a `Content-Type` header of `text/html` and content containing a `</body>` or `</head>` tag.
 
 ## BrowserSync 1.x
 
