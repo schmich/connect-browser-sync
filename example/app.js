@@ -8,7 +8,7 @@ app.set('view engine', 'ejs');
 
 if (app.get('env') === 'development') {
   var browserSync = require('browser-sync');
-  var bs = browserSync({ logSnippet: false });
+  var bs = browserSync.create().init({ logSnippet: false });
   app.use(require('connect-browser-sync')(bs));
 }
 
