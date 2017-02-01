@@ -9,9 +9,9 @@ var request = require('request');
 
 var content = '7d0b94d0-c6ec-11e4-8830-0800200c9a66';
 
-function createApp(options = {}) {
+function createApp(options) {
   var bs = browserSync.create().init({ logSnippet: false, host: '127.0.0.1' });
-  return connect().use(connectBrowserSync(bs, options)).use(function (req, res) {
+  return connect().use(connectBrowserSync(bs, options || {})).use(function (req, res) {
     res.setHeader('Content-Type', 'text/html');
     res.end('<html><head><title>Test</title></head><body>' + content + '</body></html>');
   });
