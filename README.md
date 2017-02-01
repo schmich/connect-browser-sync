@@ -42,9 +42,25 @@ See the [BrowserSync API docs](http://www.browsersync.io/docs/api/) for initiali
 - The `app.use` statement must come before any handlers that you want to integrate with BrowserSync. This includes both dynamic route handlers and static asset handlers.
 - Injection only happens on responses with a `Content-Type` header of `text/html` and content containing a `</body>` or `</head>` tag.
 
-## BrowserSync 1.x
+## Compatibility
+
+### BrowserSync 1.x
 
 If you need to use BrowserSync 1.x, use [version 1.0.2](https://github.com/schmich/connect-browser-sync/releases/tag/v1.0.2) of this package.
+
+### Turbolinks
+
+Turbolinks and BrowserSync can conflict (see [turbolinks#147](https://github.com/turbolinks/turbolinks/issues/147) and [browser-sync#977](https://github.com/BrowserSync/browser-sync/issues/977)). As a workaround, you can inject the BrowserSync tags into `<head>` instead.
+
+To inject the tags into `<head>`, specify `{ injectHead: true }`:
+
+```javascript
+if (app.get('env') === 'development') {
+  var browserSync = require('browser-sync');
+  var bs = browserSync.create().init({ logSnippet: false });
+  app.use(require('connect-browser-sync')(bs, { injectHead: true }));
+}
+```
 
 ## Example
 
