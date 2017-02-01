@@ -6,7 +6,7 @@ var app = express();
 app.set('views', __dirname);
 app.set('view engine', 'ejs');
 
-if (app.get('env') == 'development') {
+if (app.get('env') === 'development') {
   var browserSync = require('browser-sync');
   var bs = browserSync({ logSnippet: false });
   app.use(require('connect-browser-sync')(bs));
